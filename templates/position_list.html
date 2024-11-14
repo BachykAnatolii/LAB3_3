@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Position List</title>
+</head>
+<body>
+    <h1>Position List</h1>
+    <a href="{% url 'add_position' %}">Add New Position</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Base Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for position in positions %}
+            <tr>
+                <td>{{ position.id }}</td>
+                <td>{{ position.position_title }}</td>
+                <td>{{ position.base_salary }}</td>
+                <td>
+                    <a href="{% url 'edit_position' position.id %}">Edit</a>
+                    <form method="post" action="{% url 'delete_position' position.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

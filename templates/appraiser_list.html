@@ -1,0 +1,26 @@
+
+{% block content %}
+<h2>Appraisers</h2>
+<a href="{% url 'appraiser-add' %}">Add New Appraiser</a>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    {% for appraiser in object_list %}
+    <tr>
+        <td>{{ appraiser.first_name }}</td>
+        <td>{{ appraiser.last_name }}</td>
+        <td>{{ appraiser.phone }}</td>
+        <td>{{ appraiser.email }}</td>
+        <td>
+            <a href="{% url 'appraiser-edit' appraiser.pk %}">Edit</a>
+            <a href="{% url 'appraiser-delete' appraiser.pk %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

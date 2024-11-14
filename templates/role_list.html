@@ -1,0 +1,14 @@
+!
+{% block content %}
+<h2>Roles</h2>
+<a href="{% url 'role-add' %}">Add New Role</a>
+<ul>
+    {% for role in object_list %}
+    <li>
+        {{ role.role_name }}
+        <a href="{% url 'role-edit' role.pk %}">Edit</a>
+        <a href="{% url 'role-delete' role.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Position</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete this position?</h1>
+    <p>{{ position.position_title }} - {{ position.base_salary }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'position_list' %}">Cancel</a>
+    </form>
+</body>
+</html>
